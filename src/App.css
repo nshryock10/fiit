@@ -1,3 +1,96 @@
+@import './fonts.css';
+
+
+/* Global Colors */
+:root {
+
+  /* Color sheme */
+  --primary: rgb(115, 182, 249);
+  --dark-primary: rgb(60, 144, 229);
+  --secondary: rgb(249, 149, 55);
+  --tertiary: rgb(106, 255, 113);
+  --dark-neutral: rgb(113, 113, 113);
+  --medium-neutral: rgb(248, 234, 186);
+  --lighter-neutral: rgb(168, 168, 168);
+  --gr1: rgba(227, 240, 255, 0.512);
+  --neutral: rgb(251, 248, 229);
+  --dark-font: rgb(45, 44, 44);
+  --light-font: rgb(246, 246, 246);
+
+  /* Default spacing options */
+  --padding: 15px;
+  --max-width: 600px;
+
+  background-color: var(--neutral);
+
+ }
+
+
+h1 {
+  font-family: 'Playfair';
+  font-weight: 300;
+  font-size: 48px;
+}
+
+.App{
+  background-color: var(--neutral);
+  min-height: 100vh;
+  font-family: 'Manrope';
+  font-weight: 300;
+}
+
+ .AR{
+  text-align: right;
+  padding-right: var(--padding);
+ }
+
+ .tertiary-button {
+  background-color: var(--tertiary);
+  color: var(--dark-font);
+  width: 80%;
+  display: block;
+  margin: 30px auto;
+  height: 40px;
+  font-family: inherit;
+  font-size: 18px;
+  border: 1px var(--lighter-neutral) solid;
+  border-radius: 7px;
+  padding: 0;
+ }
+
+ .primary-button{
+  background-color: var(--primary);
+  color: var(--light-font);
+  width: 80%;
+  display: block;
+  margin: 30px auto;
+  height: 40px;
+  font-family: inherit;
+  font-size: 18px;
+  border: 1px var(--lighter-neutral) solid;
+  border-radius: 7px;
+  padding: 0; 
+ }
+
+ .secondary-button{
+  background-color: var(--secondary);
+  color: var(--light-font);
+  width: 80%;
+  display: block;
+  margin: 30px auto;
+  height: 40px;
+  font-family: inherit;
+  font-size: 18px;
+  border: 1px var(--lighter-neutral) solid;
+  border-radius: 7px;
+  padding: 0; 
+ }
+
+ .comp-right{
+  float: right;
+  margin-right: var(--padding);
+ }
+
 .App {
   text-align: center;
 }
@@ -7,11 +100,7 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+
 
 .App-header {
   background-color: #282c34;
