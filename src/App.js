@@ -2,29 +2,23 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Nav from './Components/Nav';
 import QuestionCard from './Components/QuestionCard';
-/*import WorkoutCard from './Components/WorkOutCard';
-import Loading from './Components/Loading'; */
-import { getWorkout } from './utils/api';
+import WorkoutCard from './Components/WorkOutCard'; 
+import Loading from './Components/Loading';
+import { getWorkout, checkServer } from './utils/api';
 import { getPrompt, getWorkoutData } from './utils/data';
+import {io} from 'socket.io-client'
+/* import { response } from 'express'; */
 
 function App() {
 
   const [inputs, setInputs] = useState({});
-  const [stage, setStage] = useState('question');
+  const [stage, setStage] = useState('question'); //change to question for production
   const [isLoading, setIsLoading] = useState(false);
   const [workout, setWorkout] = useState(null);
-
-  //Uncomment when done with layout
-  useEffect(() => {
-    if(stage === 'submitted'){
-      setIsLoading(true)
-      const prompt = getPrompt(inputs);
-      const response = callAPI(prompt);
-    }
-  }, [stage]);
+  const [message, setMessage] = useState('Working on your request...')
 
 
-/*
+  /*
   //This block is just for workout card dev
   useEffect(() => {
     if(stage === 'submitted'){
@@ -39,42 +33,61 @@ function App() {
     //const jsonData = await workData.json();
     //const data = await JSON.parse(workData);
     setWorkout(workData);
-    setStage('question')
+    //setStage('question')
   }
 */
-  //-----------------------------------
+  //----------------------------------- 
 
-  const callAPI = async (prompt) => {
-    const response = await getWorkout(prompt);
-    console.log(response)
-    
-    if(response.status && response.status !==200){
-    
-      console.log(response)
-      setWorkout(`${response.status} error. ${response.statusText}`)
-      setStage('error')
-      //setWorkout(`${response.status} error. Something went wrong on our end`)
-      setIsLoading(false);
-    
-    }else if(response.status && response.status == 201){
-      
+  useEffect(() => {
 
-    } else{
-      
-      try{
-        const myObj = await JSON.parse(response[0].content);
-        setWorkout(myObj)
-        setIsLoading(false);
-        console.log(response[0].content)
-      }catch(err){
-        console.log(err)
-        setStage('error')
-        setWorkout(response[0].content);
-        setIsLoading(false);
-        console.log(response[0].content)
-      }
-      
+    if(stage === 'submitted'){
+        setIsLoading(true); 
+        const dev_URL = 'http://localhost:3000/';
+        const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
+        const prod_URL2 = 'https://app.tryfiit.com';
+        const prod_URL3 = 'https://aiworkout-ruby.vercel.app';
+        const socket = io(dev_URL);//Add final socket server URL
+        socket.on('connect', () => console.log(socket.id));
+        socket.on('connect_error', (err)=>{
+            console.log('error in socket')
+            console.log(err.message)
+            console.log(err)
+            console.log(err.context)
+            setTimeout(()=> socket.connect(), 5000)
+        })
+        
+        const prompt = getPrompt(inputs);
+        const response = callAPI2(prompt);
+
+        socket.on('finish', async (status, data)=>{
+            try{
+                console.log(status, data);  
+                const myObj = await JSON.parse(data[0].content);
+                setWorkout(myObj)
+                setIsLoading(false);
+            }catch(err){
+                console.log(err)
+                setStage('error')
+                setWorkout(data[0].content);
+                setIsLoading(false);
+                console.log(data[0].content)
+            }
+        })
+
     }
+
+  }, [stage])
+
+
+  const checkServer = async () => {
+    const check = await checkServer()
+    console.log(check)
+  }
+
+
+  const callAPI2 = async (prompt) => {
+    const response = await getWorkout(prompt);
+    return response
   }
 
   return (
@@ -85,14 +98,14 @@ function App() {
         setStage={setStage}
         setInputs={setInputs}
         inputs={inputs}
-      /> } 
+      />} 
       { stage==='submitted' &&
-        isLoading===false && <div /> /*
+        isLoading===false &&
         <WorkoutCard 
           inputs={inputs}
           workout={workout}
           setStage={setStage}
-        /> */
+        /> 
       }
       {
         stage === 'error' && 
@@ -101,8 +114,8 @@ function App() {
         </div>
       }
       { stage==='submitted' &&
-        isLoading===true && <div /> /*
-        <Loading workout={workout} /> */
+        isLoading===true &&
+        <Loading message={message} />
       }
     </div>
   );
