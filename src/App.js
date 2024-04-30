@@ -45,7 +45,7 @@ function App() {
         const dev_URL = 'http://localhost:3000/';
         const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
         const prod_URL2 = 'https://app.tryfiit.com';
-        const prod_URL3 = 'https://fiit-mu.vercel.app';
+        const prod_URL3 = 'https://fiit-zyfn.vercel.app';
         const socket = io(prod_URL3);//Add final socket server URL
         socket.on('connect', () => console.log(socket.id));
         socket.on('connect_error', (err)=>{
