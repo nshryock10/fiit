@@ -60,6 +60,7 @@ function App() {
   const checkServer = async () => {
     const check = await checkServer()
     if(check === 'server running') {
+        console.log('server running')
         socket.on('connect', () => console.log(socket.id));
         socket.on('connect_error', (err)=>{
             console.log('error in socket')
