@@ -53,7 +53,13 @@ function App() {
 
   useEffect(() => {
     //Connect to server before API call
-    
+    checkServer()
+        
+  }, [])
+
+  const checkServer = async () => {
+    const check = await checkServer()
+    if(check === 'server running') {
         socket.on('connect', () => console.log(socket.id));
         socket.on('connect_error', (err)=>{
             console.log('error in socket')
@@ -61,8 +67,9 @@ function App() {
             console.log(err)
             setTimeout(()=> socket.connect(), 5000)
         })
-  }, [])
-
+    }
+    console.log(check)
+  }
   useEffect(() => {
 
     if(stage === 'submitted'){
@@ -103,12 +110,6 @@ function App() {
     }
 
   }, [stage])
-
-
-  const checkServer = async () => {
-    const check = await checkServer()
-    console.log(check)
-  }
 
 
   const callAPI2 = async (prompt) => {
