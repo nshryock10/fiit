@@ -23,7 +23,7 @@ const prod_URL2 = 'https://app.tryfiit.com';
 const prod_URL3 = 'https://fiit-zyfn.vercel.app';
 const io = socketIo(server , {
     cors: {
-        origin: 'https://fiit-2oza6gxqm-nicks-projects-11e62168.vercel.app//',
+        origin: 'https://fiit-mu.vercel.app/',
         methods: ['GET', 'POST'], // Specify allowed HTTP methods
         credentials: true,
     }
