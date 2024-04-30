@@ -20,10 +20,12 @@ const PORT = 3000;
 const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
 const dev_URL = 'http://localhost:3001';
 const prod_URL2 = 'https://app.tryfiit.com';
-const prod_URL3 = 'https://fiit-zyfn.vercel.app';;
+const prod_URL3 = 'https://fiit-zyfn.vercel.app';
 const io = socketIo(server , {
     cors: {
-        origin: prod_URL3
+        origin: prod_URL3,
+        methods: ['GET', 'POST'], // Specify allowed HTTP methods
+        credentials: true,
     }
 })
 
