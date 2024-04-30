@@ -42,7 +42,7 @@ function App() {
         const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
         const prod_URL2 = 'https://app.tryfiit.com';
         const prod_URL3 = 'https://fiit-zyfn.vercel.app';
-        const socket = io(prod_URL3, { transports: ['websocket'], allowEIO3: true });//Add final socket server URL
+        const socket = io(prod_URL3);//Add final socket server URL
 
   useEffect(() => {
     //Connect to server before API call
@@ -52,7 +52,6 @@ function App() {
             console.log('error in socket')
             console.log(err.message)
             console.log(err)
-            console.log(err.context)
             setTimeout(()=> socket.connect(), 5000)
         })
   }, [])
