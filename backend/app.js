@@ -25,6 +25,7 @@ const io = socketIo(server , {
     cors: {
         origin: 'https://fiit-mu.vercel.app',
         methods: ['GET', 'POST'], // Specify allowed HTTP methods
+        allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin",  "Access-Control-Allow-Credentials"],
         credentials: true,
     }
 })
