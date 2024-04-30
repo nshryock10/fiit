@@ -5,7 +5,7 @@ export const prod_URL3 = 'https://fiit-zyfn.vercel.app'
 
 export const getWorkout = async (prompt) => {
     try{
-    const response = await fetch(`${API_ENDPOINT}/chat`, {
+    const response = await fetch(`${prod_URL3}/chat`, {
         method: "POST",
         body: JSON.stringify({
             message: prompt
@@ -34,7 +34,7 @@ export const getWorkout = async (prompt) => {
 
 export const checkServer = async () => {
     try {
-        const response = await fetch(`${VER_ENDPOINT}/test`,
+        const response = await fetch(`${prod_URL3}/test`,
         {
             method: 'GET',
             body: JSON.stringify({
