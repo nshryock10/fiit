@@ -65,7 +65,7 @@ function App() {
             console.log('error in socket')
             console.log(err.message)
             console.log(err)
-            setTimeout(()=> socket.connect(), 5000)
+            setTimeout(()=> socket.connect(), 10000)
         })
     }
     console.log(check)
