@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Nav from './Components/Nav';
 import QuestionCard from './Components/QuestionCard';
-import WorkoutCard from './Components/WorkoutCard'
+import WorkoutCard from './Components/WorkOutCard'
 import Loading from './Components/Loading';
 import { getWorkout, checkServer } from './utils/api';
 import { getPrompt, getWorkoutData } from './utils/data';
