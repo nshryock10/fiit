@@ -42,7 +42,7 @@ function App() {
         const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
         const prod_URL2 = 'https://app.tryfiit.com';
         const prod_URL3 = 'https://fiit-zyfn.vercel.app'
-        
+let socket        
 
   useEffect(() => {
     //Connect to server before API call
@@ -55,7 +55,7 @@ function App() {
     const check = await checkServer()
     if(check.status === 200) {
         console.log('server running')
-        const socket = io(prod_URL3, {
+         socket = io(prod_URL3, {
           withCredentials: true,
           extraHeaders: {
             "Content-Type": "application/json",
