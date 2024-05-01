@@ -42,14 +42,7 @@ function App() {
         const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
         const prod_URL2 = 'https://app.tryfiit.com';
         const prod_URL3 = 'https://fiit-zyfn.vercel.app'
-        const socket = io(prod_URL3, {
-          withCredentials: true,
-          extraHeaders: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin" : "*", 
-            "Access-Control-Allow-Credentials" : "*",
-          }
-        });//Add final socket server URL
+        
 
   useEffect(() => {
     //Connect to server before API call
@@ -60,8 +53,16 @@ function App() {
 
   const checkServerStatus = async () => {
     const check = await checkServer()
-    if(check === 'server running') {
+    if(check.status === 200) {
         console.log('server running')
+        const socket = io(prod_URL3, {
+          withCredentials: true,
+          extraHeaders: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin" : "*", 
+            "Access-Control-Allow-Credentials" : "*",
+          }
+        });//Add final socket server URL
         socket.on('connect', () => console.log(socket.id));
         socket.on('connect_error', (err)=>{
             console.log('error in socket')
