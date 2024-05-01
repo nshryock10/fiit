@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Nav from './Components/Nav';
 import QuestionCard from './Components/QuestionCard';
-import WorkoutCard from './Components/WorkoutCard';
+import WorkoutCard from './Components/WorkoutCard'
 import Loading from './Components/Loading';
 import { getWorkout, checkServer } from './utils/api';
 import { getPrompt, getWorkoutData } from './utils/data';
@@ -41,7 +41,7 @@ function App() {
   const dev_URL = 'http://localhost:3000/';
         const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
         const prod_URL2 = 'https://app.tryfiit.com';
-        const prod_URL3 = 'https://fiit-zyfn.vercel.app';
+        const prod_URL3 = 'https://fiit-zyfn.vercel.app'
         const socket = io(prod_URL3, {
           withCredentials: true,
           extraHeaders: {
