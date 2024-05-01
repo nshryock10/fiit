@@ -10,18 +10,6 @@ function WorkoutCard(props) {
 
     const [week, setWeek] = useState(1);
 
-    useEffect( () => {
-        //console.log(inputs)
-    }, [])
-
-    /*
-workout.weeks.map(week => {
-                return(
-                    <Week week={week} weekNum={week}/>
-                )
-            })
-    */
-
     return (
       <div className="workout-card" >
         {
