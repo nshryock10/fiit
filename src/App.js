@@ -53,6 +53,7 @@ function App() {
 
   useEffect(() => {
     //Connect to server before API call
+    console.log('checking server...')
     checkServer()
         
   }, [])
@@ -71,6 +72,7 @@ function App() {
     }
     console.log(check)
   }
+
   useEffect(() => {
 
     if(stage === 'submitted'){
