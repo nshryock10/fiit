@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Nav from './Components/Nav';
 import QuestionCard from './Components/QuestionCard';
-import WorkoutCard from './Components/WorkOutCard'; 
+import WorkoutCard from './Components/WorkoutCard';
 import Loading from './Components/Loading';
 import { getWorkout, checkServer } from './utils/api';
 import { getPrompt, getWorkoutData } from './utils/data';
@@ -54,11 +54,11 @@ function App() {
   useEffect(() => {
     //Connect to server before API call
     console.log('checking server...')
-    checkServer()
+    checkServerStatus()
         
   }, [])
 
-  const checkServer = async () => {
+  const checkServerStatus = async () => {
     const check = await checkServer()
     if(check === 'server running') {
         console.log('server running')

@@ -37,16 +37,6 @@ export const checkServer = async () => {
         const response = await fetch(`${prod_URL3}/test`,
         {
             method: 'GET',
-            body: JSON.stringify({
-                message: prompt
-            }),
-            // this works on chatGPT but preventing AWS req
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin" : "*", 
-                "Access-Control-Allow-Credentials" : "*",
-                //"Access-Control-Allow-Headers": "*" 
-              }
         })
         if(response){
             if(response.status !== 200){
