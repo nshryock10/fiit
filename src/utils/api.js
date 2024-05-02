@@ -1,7 +1,7 @@
 export const API_ENDPOINT = "http://localhost:3000"; //Uncomment in Prod
 export const AWS_ENDPOINT = "https://a8jukcsjq9.execute-api.us-east-1.amazonaws.com/dev";
 export const HER_ENDPOINT = "https://fiit-8a6ab7670425.herokuapp.com"
-export const prod_URL3 = 'https://fiit-zyfn.vercel.app'
+export const prod_URL3 = 'https://fiit-ei55.onrender.com'
 
 export const getWorkout = async (prompt) => {
     try{
