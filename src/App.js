@@ -41,13 +41,13 @@ function App() {
 
   useEffect(() => {
     //Connect to server before API call
-    checkServerStatus()
+    //checkServerStatus()
         
   }, [])
 
   const checkServerStatus = async () => {
     const check = await checkServer()
-    if(check.status === 200) {
+   /* if(check.status === 200) {
         socket = io(prod_URL3, {
           withCredentials: true,
           extraHeaders: {
