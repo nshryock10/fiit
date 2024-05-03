@@ -37,12 +37,7 @@ function App() {
   }
 */
   //----------------------------------- 
-
-  const dev_URL = 'http://localhost:3000/';
-  const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
-  const prod_URL2 = 'https://app.tryfiit.com';
-  const prod_URL3 = 'https://fiit-ei55.onrender.com'
-  let socket        
+      
 
   useEffect(() => {
     //Connect to server before API call
@@ -77,12 +72,19 @@ function App() {
 
     if(stage === 'submitted'){
         setIsLoading(true); 
-        /*
+        
         const dev_URL = 'http://localhost:3000/';
         const prod_URL = 'https://fiit-8a6ab7670425.herokuapp.com';
         const prod_URL2 = 'https://app.tryfiit.com';
-        const prod_URL3 = 'https://fiit-zyfn.vercel.app';
-        const socket = io(prod_URL3);//Add final socket server URL
+        const prod_URL3 = 'https://fiit-ei55.onrender.com'
+        const socket = io(prod_URL3, {
+          withCredentials: true,
+          extraHeaders: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin" : "*", 
+            "Access-Control-Allow-Credentials" : "*",
+          }
+        });//Add final socket server URL
         socket.on('connect', () => console.log(socket.id));
         socket.on('connect_error', (err)=>{
             console.log('error in socket')
@@ -91,7 +93,7 @@ function App() {
             console.log(err.context)
             setTimeout(()=> socket.connect(), 5000)
         })
-        */
+        
         const prompt = getPrompt(inputs);
         const response = callAPI2(prompt);
 
