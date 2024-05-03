@@ -69,7 +69,7 @@ app.post("/chat", async (req, res, next) => {
      }catch(error){
          console.log('error', error)
          //console.log(error.response.status)
-         res.status(error.response.status || 500).send(error.response.statusText)
+         res.status(error.response.code || 500).send(error.response.statusText)
      }
  
      
