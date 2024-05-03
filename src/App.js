@@ -62,9 +62,9 @@ function App() {
             console.log(err.message)
             console.log(err)
             // setTimeout(()=> socket.connect(), 10000)
-        }) */
+        }) 
          
-    }
+    } */
     console.log(check)
   }
 
